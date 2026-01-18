@@ -24,6 +24,22 @@ function MainContent() {
         flexDirection: 'column',
         gap: '20px'
       }}>
+        {/* Exact text as requested */}
+        <p style={{
+          fontSize: '1.2rem',
+          lineHeight: '1.8',
+          textAlign: 'center',
+          color: '#2c3e50',
+          padding: '15px',
+          backgroundColor: 'white',
+          borderRadius: '8px',
+          fontWeight: 'bold',
+          fontStyle: 'italic',
+          borderLeft: '4px solid #3498db'
+        }}>
+          I love to visit New York, Paris, and Tokyo.
+        </p>
+        
         <p style={{
           fontSize: '1.2rem',
           lineHeight: '1.8',
@@ -37,6 +53,7 @@ function MainContent() {
           history, and attractions. From bustling metropolises to tranquil towns, 
           each city has its own story to tell.
         </p>
+        
         <div style={{
           display: 'flex',
           justifyContent: 'center',
