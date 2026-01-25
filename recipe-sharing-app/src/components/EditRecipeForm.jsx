@@ -13,21 +13,21 @@ const EditRecipeForm = ({ recipe }) => {
   
   const updateRecipe = useRecipeStore((state) => state.updateRecipe);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    updateRecipe(recipe.id, {
-      title,
-      description,
-      ingredients: ingredients.split(',').map(item => item.trim()),
-      instructions,
-      cookingTime: parseInt(cookingTime),
-      difficulty,
-      category
-    });
-    
-    setIsEditing(false);
-  };
+  const handleSubmit = (event) => {
+  event.preventDefault();
+
+  updateRecipe(recipe.id, {
+    title,
+    description,
+    ingredients: ingredients.split(',').map(item => item.trim()),
+    instructions,
+    cookingTime: parseInt(cookingTime),
+    difficulty,
+    category
+  });
+
+  setIsEditing(false);
+};
 
   if (!isEditing) {
     return (
