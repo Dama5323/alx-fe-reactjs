@@ -1,8 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-import RecipeList from "./components/RecipeList";
-import AddRecipeForm from "./components/AddRecipeForm";
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import RecipeList from './components/RecipeList';
+import AddRecipeForm from './components/AddRecipeForm';
+import RecipeDetail from './components/RecipeDetail';
+import './App.css';
 
 function App() {
   return (
@@ -22,18 +22,18 @@ function App() {
                   <div className="left-column">
                     <AddRecipeForm />
                   </div>
-
                   <div className="right-column">
                     <RecipeList />
                   </div>
                 </>
               }
             />
+            <Route path="/recipes/:id" element={<RecipeDetail />} />
           </Routes>
         </main>
 
         <footer className="app-footer">
-          <p>Built with React, Zustand & React Router</p>
+          <p>Built with React & Zustand</p>
         </footer>
       </div>
     </Router>
