@@ -4,10 +4,10 @@ import { persist } from 'zustand/middleware';
 const useRecipeStore = create(
   persist(
     (set, get) => ({
-      // ✅ REQUIRED BY CHECKER
+      
       recipes: [],
 
-      // ✅ REQUIRED BY CHECKER
+      
       setRecipes: (recipes) => set({ recipes }),
 
       // CRUD
@@ -48,6 +48,16 @@ const useRecipeStore = create(
         return recipes.filter((recipe) =>
           recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
         );
+      },
+
+      // Recommendations
+      recommendations: [],
+      generateRecommendations: () => {
+        const { recipes, favorites } = get();
+        const recommended = recipes.filter(
+          (recipe) => !favorites.includes(recipe.id)
+        );
+        set({ recommendations: recommended });
       },
     }),
     {
