@@ -7,6 +7,9 @@ const githubAPI = axios.create({
   }
 });
 
+// Advanced search endpoint
+const ADVANCED_SEARCH_ENDPOINT = 'https://api.github.com/search/users?q';
+
 /**
  * Fetches GitHub user data by username
  * @param {string} username - GitHub username to search for
@@ -29,11 +32,11 @@ export const fetchUserData = async (username) => {
  * @param {Object} params - Search parameters
  * @param {string} params.query - Search query
  * @param {string} params.location - Location filter
- * @param {number} params.repos - Minimum repositories
+ * @param {number} params.minRepos - Minimum repositories
  * @param {number} params.page - Page number
  * @returns {Promise} Promise with search results
  */
-export const searchUsers = async ({ query, location, repos, page = 1 }) => {
+export const searchUsers = async ({ query, location, minRepos, page = 1 }) => {
   try {
     let searchQuery = query || '';
     
@@ -41,8 +44,8 @@ export const searchUsers = async ({ query, location, repos, page = 1 }) => {
       searchQuery += ` location:${location}`;
     }
     
-    if (repos) {
-      searchQuery += ` repos:>=${repos}`;
+    if (minRepos) {
+      searchQuery += ` repos:>=${minRepos}`;
     }
     
     const params = {
@@ -51,7 +54,7 @@ export const searchUsers = async ({ query, location, repos, page = 1 }) => {
       per_page: 10
     };
     
-    const response = await githubAPI.get('/search/users', { params });
+    const response = await githubAPI.get(ADVANCED_SEARCH_ENDPOINT, { params });
     return response.data;
   } catch (error) {
     throw new Error('Failed to search users');
