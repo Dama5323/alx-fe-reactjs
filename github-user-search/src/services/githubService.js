@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const githubAPI = axios.create({
-  baseURL: import.meta.env.VITE_APP_GITHUB_API_URL,
+  baseURL: 'https://api.github.com',
   headers: {
     'Accept': 'application/vnd.github.v3+json',
   }
