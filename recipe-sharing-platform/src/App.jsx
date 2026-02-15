@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import RecipeDetail from './components/RecipeDetail';
+import AddRecipeForm from './components/AddRecipeForm';
 
 function App() {
   return (
@@ -32,9 +33,12 @@ function App() {
                 <Link to="/" className="text-gray-600 hover:text-blue-500 transition-colors">
                   Home
                 </Link>
-                <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors">
+                <Link 
+                  to="/add-recipe" 
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors"
+                >
                   Add Recipe
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -45,6 +49,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/recipe/:id" element={<RecipeDetail />} />
+            <Route path="/add-recipe" element={<AddRecipeForm />} />
           </Routes>
         </main>
 
