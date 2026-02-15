@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
@@ -37,20 +38,26 @@ const HomePage = () => {
       {/* Responsive Grid Layout */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {recipes.map((recipe) => (
-          <div key={recipe.id} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-            <img 
-              src={recipe.image} 
-              alt={recipe.title} 
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-4">
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">{recipe.title}</h3>
-              <p className="text-gray-600 text-sm mb-4">{recipe.summary}</p>
-              <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-300 w-full">
-                View Recipe
-              </button>
+          <Link 
+            key={recipe.id} 
+            to={`/recipe/${recipe.id}`}
+            className="transform transition-all duration-300 hover:-translate-y-2"
+          >
+            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 h-full">
+              <img 
+                src={recipe.image} 
+                alt={recipe.title} 
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-4">
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">{recipe.title}</h3>
+                <p className="text-gray-600 text-sm mb-4">{recipe.summary}</p>
+                <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-300 w-full">
+                  View Recipe
+                </button>
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 
