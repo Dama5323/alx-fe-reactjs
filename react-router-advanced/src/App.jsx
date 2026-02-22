@@ -1,5 +1,5 @@
 import React, { useState, createContext } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';  // ✅ BrowserRouter imported here
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
@@ -33,31 +33,33 @@ const AuthProvider = ({ children }) => {
 
 function App() {
   return (
-    <AuthProvider>  {/* Wrap app with AuthProvider */}
-      <div className="App">
-        <Navbar />
-        <div className="container">
-          <Routes>
-            {/* Public Routes */}
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/login" element={<Login />} />
-            
-            {/* Dynamic routing implemented - using /blog/:id pattern */}
-            <Route path="/blog/:id" element={<BlogPost />} />
-            
-            {/* Protected route implemented */}
-            <Route element={<ProtectedRoute />}>
-              {/* Nested Routes within Profile */}
-              <Route path="/profile/*" element={<Profile />} />
-            </Route>
-            
-            {/* Catch all - redirect to home */}
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+    <BrowserRouter>  {/* ✅ BrowserRouter wrapper in App component */}
+      <AuthProvider>
+        <div className="App">
+          <Navbar />
+          <div className="container">
+            <Routes>
+              {/* Public Routes */}
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/login" element={<Login />} />
+              
+              {/* Dynamic routing implemented - using /blog/:id pattern */}
+              <Route path="/blog/:id" element={<BlogPost />} />
+              
+              {/* Protected route implemented */}
+              <Route element={<ProtectedRoute />}>
+                {/* Nested Routes within Profile */}
+                <Route path="/profile/*" element={<Profile />} />
+              </Route>
+              
+              {/* Catch all - redirect to home */}
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </div>
         </div>
-      </div>
-    </AuthProvider>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 
