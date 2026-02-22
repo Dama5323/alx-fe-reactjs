@@ -17,7 +17,6 @@ const fetchPosts = async () => {
 
 const PostsComponent = () => {
 
-  // ✅ MUST COME FIRST
   const {
     data: posts,
     isLoading,
@@ -27,15 +26,15 @@ const PostsComponent = () => {
     isFetching
   } = useQuery('posts', fetchPosts, {
     staleTime: 50000,
-    cacheTime: 100000
+    cacheTime: 100000,
+    refetchOnWindowFocus: true,
+    keepPreviousData: true
   });
 
-  // ✅ Loading state
   if (isLoading) {
     return <p>Loading posts...</p>;
   }
 
-  // ✅ Checker requires isError
   if (isError) {
     return (
       <div>
@@ -52,7 +51,6 @@ const PostsComponent = () => {
     <div>
       <h2>Posts ({posts.length})</h2>
 
-      {/* ✅ Refetch interaction */}
       <button onClick={() => refetch()}>
         {isFetching ? "Refetching..." : "Refetch Posts"}
       </button>
