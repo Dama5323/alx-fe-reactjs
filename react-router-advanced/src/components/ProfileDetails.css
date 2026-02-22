@@ -1,0 +1,69 @@
+.profile-details h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.detail-item label {
+  font-size: 0.9rem;
+  color: #6c757d;
+  font-weight: bold;
+}
+
+.detail-item span {
+  font-size: 1.1rem;
+  color: #2c3e50;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.badge.active {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.badge.user {
+  background-color: #cce5ff;
+  color: #004085;
+}
+
+.info-box {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #e8f4f8;
+  border-radius: 6px;
+  border-left: 4px solid #3498db;
+}
+
+.info-box h3 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.info-box p {
+  color: #666;
+  margin: 5px 0;
+  line-height: 1.5;
+}

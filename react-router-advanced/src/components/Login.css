@@ -1,0 +1,128 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 200px);
+}
+
+.login-container {
+  max-width: 400px;
+  width: 100%;
+  padding: 40px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.login-container h2 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.demo-note {
+  text-align: center;
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.redirect-message {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.redirect-message strong {
+  color: #856404;
+  font-weight: bold;
+}
+
+.login-form {
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #495057;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52,152,219,0.1);
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #2980b9;
+}
+
+.login-info {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+}
+
+.login-info h4 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.login-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.login-info li {
+  padding: 8px 0;
+  color: #495057;
+  border-bottom: 1px dashed #dee2e6;
+}
+
+.login-info li:last-child {
+  border-bottom: none;
+}
