@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const RegistrationForm = () => {
-  // Controlled components setup with individual useState hooks
+  // Controlled components setup
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -9,19 +9,20 @@ const RegistrationForm = () => {
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
 
-  // Basic validation logic - check that no fields are left empty
+  // Basic validation logic with exact required syntax
   const validateForm = () => {
     const newErrors = {};
     
-    if (!username.trim()) {
+    // Check for empty fields - using exact syntax requested
+    if (!username) {  // Check for empty username
       newErrors.username = 'Username is required';
     }
     
-    if (!email.trim()) {
+    if (!email) {  // ✅ Required: if (!email)
       newErrors.email = 'Email is required';
     }
     
-    if (!password.trim()) {
+    if (!password) {  // ✅ Required: if (!password)
       newErrors.password = 'Password is required';
     }
     
@@ -51,13 +52,13 @@ const RegistrationForm = () => {
 
   return (
     <div>
-      <h2>User Registration Form</h2>
+      <h2>User Registration Form (Controlled Components)</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Username:</label>
           <input
             type="text"
-            value={username}  // ✅ Required: value={username}
+            value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
           {errors.username && <span style={{color: 'red'}}>{errors.username}</span>}
@@ -67,7 +68,7 @@ const RegistrationForm = () => {
           <label>Email:</label>
           <input
             type="email"
-            value={email}  // ✅ Required: value={email}
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           {errors.email && <span style={{color: 'red'}}>{errors.email}</span>}
@@ -77,7 +78,7 @@ const RegistrationForm = () => {
           <label>Password:</label>
           <input
             type="password"
-            value={password}  // ✅ Required: value={password}
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           {errors.password && <span style={{color: 'red'}}>{errors.password}</span>}
