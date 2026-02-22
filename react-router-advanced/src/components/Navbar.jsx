@@ -57,15 +57,15 @@ const Navbar = () => {
             </li>
           )}
           
-          {/* Dynamic route example */}
+          {/* ✅ Dynamic route example - using /blog/:id pattern */}
           <li className="nav-item">
             <NavLink 
-                to="/post/1" 
+                to="/blog/1"  // Updated from /post/1 to /blog/1
                 className={({ isActive }) => 
                   isActive ? 'nav-link active' : 'nav-link'
                 }
               >
-                Sample Post
+                Sample Blog
               </NavLink>
           </li>
           

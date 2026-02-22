@@ -25,18 +25,18 @@ const Home = () => {
         
         <div className="feature-card">
           <h3>🔄 Dynamic Routes</h3>
-          <p>Blog posts use dynamic routing with URL parameters (e.g., /post/1, /post/2).</p>
-          <Link to="/post/1" className="feature-link">View Sample Post →</Link>
+          <p>Blog posts use dynamic routing with URL parameters (e.g., /blog/1, /blog/2).</p>
+          <Link to="/blog/1" className="feature-link">View Sample Blog →</Link>  {/* Updated */}
         </div>
       </div>
 
       <div className="demo-section">
         <h2>Quick Demo Links</h2>
         <div className="demo-links">
-          <Link to="/post/1" className="demo-link">Post 1</Link>
-          <Link to="/post/2" className="demo-link">Post 2</Link>
-          <Link to="/post/3" className="demo-link">Post 3</Link>
-          <Link to="/post/4" className="demo-link">Post 4 (404)</Link>
+          <Link to="/blog/1" className="demo-link">Blog 1</Link>  {/* Updated */}
+          <Link to="/blog/2" className="demo-link">Blog 2</Link>  {/* Updated */}
+          <Link to="/blog/3" className="demo-link">Blog 3</Link>  {/* Updated */}
+          <Link to="/blog/4" className="demo-link">Blog 4 (404)</Link>  {/* Updated */}
         </div>
       </div>
     </div>

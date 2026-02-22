@@ -31,21 +31,21 @@ const blogPosts = {
 };
 
 const BlogPost = () => {
-  const { postId } = useParams(); // Dynamic route parameter
+  const { id } = useParams(); // ✅ Dynamic route parameter (matches "/blog/:id")
   const navigate = useNavigate();
   
-  const post = blogPosts[postId];
+  const post = blogPosts[id];
 
   if (!post) {
     return (
       <div className="not-found">
         <h1>404 - Post Not Found</h1>
-        <p>The blog post with ID "{postId}" doesn't exist.</p>
+        <p>The blog post with ID "{id}" doesn't exist.</p>
         <p>Try one of these available posts:</p>
         <div className="suggestions">
-          <Link to="/post/1" className="suggestion-link">Post 1</Link>
-          <Link to="/post/2" className="suggestion-link">Post 2</Link>
-          <Link to="/post/3" className="suggestion-link">Post 3</Link>
+          <Link to="/blog/1" className="suggestion-link">Post 1</Link>
+          <Link to="/blog/2" className="suggestion-link">Post 2</Link>
+          <Link to="/blog/3" className="suggestion-link">Post 3</Link>
         </div>
         <button onClick={() => navigate('/')} className="home-btn">
           Go to Home
@@ -72,19 +72,19 @@ const BlogPost = () => {
 
       <div className="post-content">
         <p>{post.content}</p>
-        <p>This is a dynamic route demo. The post ID "{postId}" was extracted from the URL using the useParams hook.</p>
+        <p>This is a dynamic route demo. The post ID "{id}" was extracted from the URL using the useParams hook.</p>
       </div>
 
       <div className="post-navigation">
         <h3>Other Posts:</h3>
         <div className="nav-links">
-          {Object.keys(blogPosts).map(id => (
+          {Object.keys(blogPosts).map(postId => (
             <Link 
-              key={id} 
-              to={`/post/${id}`}
-              className={id === postId ? 'current' : ''}
+              key={postId} 
+              to={`/blog/${postId}`}
+              className={postId === id ? 'current' : ''}
             >
-              {blogPosts[id].title}
+              {blogPosts[postId].title}
             </Link>
           ))}
         </div>
@@ -92,9 +92,9 @@ const BlogPost = () => {
 
       <div className="dynamic-route-demo">
         <h4>Dynamic Route Demo</h4>
-        <p><strong>Current URL:</strong> /post/{postId}</p>
-        <p><strong>Parameter value:</strong> {postId}</p>
-        <p><code>const &#123; postId &#125; = useParams();</code></p>
+        <p><strong>Current URL:</strong> /blog/{id}</p>
+        <p><strong>Parameter value:</strong> {id}</p>
+        <p><code>const &#123; id &#125; = useParams();  // from /blog/:id</code></p>
       </div>
     </article>
   );
