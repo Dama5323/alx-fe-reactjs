@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import { AuthContext } from '../App';
+import useAuth from '../hooks/useAuth';  // ✅ useAuth hook imported
 
 const ProtectedRoute = () => {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();  // ✅ useAuth hook used
   const location = useLocation();
 
   // If user is not authenticated, redirect to login

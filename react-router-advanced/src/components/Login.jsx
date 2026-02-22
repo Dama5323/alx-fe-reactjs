@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { AuthContext } from '../App';
+import useAuth from '../hooks/useAuth';  // Import useAuth hook
 import './Login.css';
 
 const Login = () => {
@@ -10,7 +10,7 @@ const Login = () => {
   });
   const [error, setError] = useState('');
   
-  const { login } = useContext(AuthContext);
+  const { login } = useAuth();  // Use the custom hook
   const navigate = useNavigate();
   const location = useLocation();
 

@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../App';
+import React from 'react';
+import useAuth from '../hooks/useAuth';  // Import useAuth hook
 import './ProfileDetails.css';
 
 const ProfileDetails = () => {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();  // Use the custom hook
 
   return (
     <div className="profile-details">

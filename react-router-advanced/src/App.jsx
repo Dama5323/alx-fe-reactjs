@@ -1,18 +1,19 @@
 import React, { useState, createContext } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import Profile from './components/Profile';
-import BlogPost from './components/BlogPost';  
+import BlogPost from './components/BlogPost';
 import Login from './components/Login';
-import ProtectedRoute from './components/ProtectedRoute';  imported
+import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
 
 // Create auth context for authentication state
 export const AuthContext = createContext();
 
-function App() {
+// Auth Provider component
+const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const login = (username) => {
@@ -25,6 +26,14 @@ function App() {
 
   return (
     <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+function App() {
+  return (
+    <AuthProvider>  {/* Wrap app with AuthProvider */}
       <div className="App">
         <Navbar />
         <div className="container">
@@ -34,11 +43,11 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
             
-            {/* ✅ Dynamic routing implemented - using /blog/:id pattern */}
-            <Route path="/blog/:id" element={<BlogPost />} />  {/* ✅ Contains "/blog/:id" and BlogPost */}
+            {/* Dynamic routing implemented - using /blog/:id pattern */}
+            <Route path="/blog/:id" element={<BlogPost />} />
             
-            {/* ✅ Protected route implemented */}
-            <Route element={<ProtectedRoute />}>  {/* ✅ ProtectedRoute component used */}
+            {/* Protected route implemented */}
+            <Route element={<ProtectedRoute />}>
               {/* Nested Routes within Profile */}
               <Route path="/profile/*" element={<Profile />} />
             </Route>
@@ -48,7 +57,7 @@ function App() {
           </Routes>
         </div>
       </div>
-    </AuthContext.Provider>
+    </AuthProvider>
   );
 }
 

@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Routes, Route, Link, NavLink } from 'react-router-dom';
-import { AuthContext } from '../App';
+import useAuth from '../hooks/useAuth';  // Import useAuth hook
 import ProfileDetails from './ProfileDetails';
 import ProfileSettings from './ProfileSettings';
 import './Profile.css';
 
 const Profile = () => {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();  // Use the custom hook
 
   return (
     <div className="profile-container">

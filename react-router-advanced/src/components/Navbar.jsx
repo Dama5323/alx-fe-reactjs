@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../App';
+import useAuth from '../hooks/useAuth';  // Import useAuth hook
 import './Navbar.css';
 
 const Navbar = () => {
-  const { user, logout } = useContext(AuthContext);
+  const { user, logout } = useAuth();  // Use the custom hook
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -57,10 +57,10 @@ const Navbar = () => {
             </li>
           )}
           
-          {/* ✅ Dynamic route example - using /blog/:id pattern */}
+          {/* Dynamic route example - using /blog/:id pattern */}
           <li className="nav-item">
             <NavLink 
-                to="/blog/1"  // Updated from /post/1 to /blog/1
+                to="/blog/1"
                 className={({ isActive }) => 
                   isActive ? 'nav-link active' : 'nav-link'
                 }
